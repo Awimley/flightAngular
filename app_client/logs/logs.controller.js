@@ -15,6 +15,7 @@
       flightData.flightData(vm.planeName)
       .success(function (data) {
         vm.data = {flights : data.reverse()};
+        console.log(data);
       })
       .error(function (e) {
         console.log(e);
@@ -43,6 +44,7 @@
       flightData.flightData(vm.planeName)
       .success(function (data) {
         vm.data = {flights : data.reverse()};
+        console.log(data);
       })
       .error(function (e) {
         console.log(e);
@@ -90,7 +92,9 @@
         controller : 'addModalCtrl as vm',
         resolve : {
           flight : function () {
-            if (!vm.data.flights[0].hobbsIn) {
+            $log.debug(vm.data.flights);
+            if (!vm.data.flights[0]) {
+              $log.debug("we got no flights bruh");
               return {
                 flt_date: date,
                 hobbs_out: 0,
