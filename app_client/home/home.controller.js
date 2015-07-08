@@ -14,10 +14,10 @@
     };
     vm.token = localStorageService.cookie.get('token');
     if (vm.token.plane) {
-      vm.planeName = vm.token.plane;
       flightData.flightData(vm.planeName)
       .success(function (data) {
-        vm.data = {flights : data.reverse()};
+        vm.data = {flight : data[data.length -1]};
+      $log.debug(vm.data.flight);
       })
       .error(function (e) {
         console.log(e);
