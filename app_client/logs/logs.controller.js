@@ -97,8 +97,8 @@
               $log.debug("we got no flights bruh");
               return {
                 flt_date: date,
-                hobbs_out: 0,
-                fuel_out: 0,
+                hobbs_out: null,
+                fuel_out: null,
                 planeName: vm.planeName
               }
             } else {
@@ -113,7 +113,7 @@
         }
       });
       modalInstance.result.then(function () {
-        flightData.flightData()
+        flightData.flightData(vm.planeName)
         .success(function (data) {
           vm.data = {flights : data.reverse()};
         })

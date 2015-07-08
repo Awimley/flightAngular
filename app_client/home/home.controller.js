@@ -13,12 +13,15 @@
       strapline: ''
     };
     vm.token = localStorageService.cookie.get('token');
-    
+
     if (vm.token.plane) {
       vm.planeName = vm.token.plane;
       flightData.flightData(vm.planeName)
       .success(function (data) {
-        vm.data = {flight : data[data.length -1]};
+        vm.data = {
+          flight : data[data.length -1],
+          flights: data.reverse()
+        };
       $log.debug(vm.data.flight);
       })
       .error(function (e) {
@@ -42,7 +45,10 @@
 
       flightData.flightData(vm.planeName)
       .success(function (data) {
-        vm.data = {flight : data[data.length -1]};
+        vm.data = {
+          flight : data[data.length -1],
+          flights: data.reverse()
+        };
       $log.debug(vm.data.flight);
       })
       .error(function (e) {
@@ -61,19 +67,33 @@
         controller : 'addModalCtrl as vm',
         resolve : {
           flight : function () {
-            return {
-              flt_date : date,
-              hobbs_out : vm.data.flight.hobbsIn,
-              fuel_out : vm.data.flight.fuelIn,
-              planeName: vm.planeName
-            };
+            $log.debug(vm.data.flights);
+            if (!vm.data.flights[0]) {
+              $log.debug("we got no flights bruh");
+              return {
+                flt_date: date,
+                hobbs_out: null,
+                fuel_out: null,
+                planeName: vm.planeName
+              }
+            } else {
+              return {
+                flt_date : date,
+                hobbs_out : vm.data.flights[0].hobbsIn,
+                fuel_out : vm.data.flights[0].fuelIn,
+                planeName: vm.planeName
+              };  
+            }
           }
         }
       });
       modalInstance.result.then(function () {
-        flightData.flightData()
+        flightData.flightData(vm.planeName)
         .success(function (data) {
-          vm.data = {flights : data.reverse()};
+          vm.data = {
+            flight : data[data.length -1],
+            flights: data.reverse()
+          };
         })
         .error(function (e) {
           $log.debug(e);
