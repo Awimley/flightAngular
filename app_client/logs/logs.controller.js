@@ -67,7 +67,7 @@
           }
         });
         modalInstance.result.then(function (data) {
-          flightData.flightData()
+          flightData.flightData(vm.planeName)
           .success(function (data) {
             vm.data = {flights : data.reverse()};
           })

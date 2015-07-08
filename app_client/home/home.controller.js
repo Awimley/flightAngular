@@ -103,10 +103,7 @@
     vm.logout = function () {
       localStorageService.cookie.set("token", {});
       $location.url("/login");
-    }
-
-      
-
+    };
   }
 })();
 
