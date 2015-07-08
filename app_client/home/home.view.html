@@ -1,0 +1,52 @@
+<navigation></navigation>
+
+<div class="container">
+  <br>
+  <br>
+  <br>
+  <page-header content="vm.pageHeader"></page-header>
+<!--   <div role="alert" ng-show="!vm.data" class="alert alert-success text-center"><h3>Loading...</h3></div> -->
+  <div class="row text-center">
+    <h5>Select a plane: </h5><select class="planeSelect" ng-options="plane as plane for plane in vm.token.planes" ng-model="vm.planeName" ng-change="vm.selectPlane()"></select>
+  </div>
+  <hr>
+
+  <div class="row text-center" ng-init="mod=0">
+    <div class="col-sm-12">
+      <table class="table table-bordered table-responsive table-large" id="table" ng-show="vm.data">
+        <thead>
+          <tr>
+            <th>Most Recent Flight </th>
+            <td>{{vm.data.flight.fltDate}}</td>
+          </tr>
+          <tr>
+            <th>Current Hobbs </th>
+            <td>{{vm.data.flight.hobbsIn}} Hours</td>
+          </tr>
+          <tr>
+            <th>Current Fuel </th>
+            <td>{{ vm.data.flight.fuelIn }} Gallons</td>
+          </tr>
+          <tr>
+            <th>Hours Since Last Oil Change </th>
+            <td>{{ vm.data.flight.hoursLastOilChange }}</td>
+          </tr>
+          <tr ng-show="mod == 0">
+            <th>Last Inspection Date </th>
+            <td><a class="btn btn-default" ng-click="mod = 1" >{{ vm.lastInspection }}</a></td>
+          </tr>
+          <tr ng-show="mod == 1">
+            <th><a class="btn btn-default" ng-click="mod=0" ng-show="mod == 1">Update Inspection Date : </a></th>
+            <td><input id="lastInspection" name="lastInspection" ng-model="vm.lastInspection" ng-show="mod == 1"/></td>
+          </tr>
+        </thead>
+        <tfoot>
+        </tfoot>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <footer-generic></footer-generic>
+</div>

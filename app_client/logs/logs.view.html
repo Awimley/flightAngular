@@ -1,0 +1,48 @@
+<navigation></navigation>
+
+<div class="container">
+  <br>
+  <br>
+  <br>
+  <page-header content="vm.pageHeader"></page-header>
+
+  <div class="row text-center">
+    <h5>Select a plane: </h5><select class="planeSelect" ng-options="plane as plane for plane in vm.token.planes" ng-model="vm.planeName" ng-change="vm.selectPlane()"></select>
+  </div>
+<!--   <div role="alert" ng-show="!vm.data" class="alert alert-success text-center"><h3>Loading...</h3></div> -->
+<hr>
+  <div class="row text-center">
+    <div class="col-sm-12">
+      <table class="table table-bordered table-responsive" id="table">
+        <thead>
+          <tr>
+            <th>Date (MM-DD-YY)</th>
+            <th>Hobbs In</th>
+            <th>Hobbs Out</th>
+            <th>Hours Flown</th>
+            <th>Fuel per Hour</th>
+            <th>Fuel Remaining</th>
+            <th>Hours Since Oil Change</th>
+            <th>Oil Changed?</th>
+          </tr>
+        </thead>
+        <tfoot>
+        </tfoot>
+        <tbody class="logs">
+          <tr ng-repeat="flt in vm.data.flights">
+            <td><a ng-attr-id="{{ flt._id }}" ng-click="vm.popupUpdateForm($event)" class="btn btn-default datebutton">{{flt.fltDate}}</a></td>
+            <td>{{flt.hobbsIn}}</td>
+            <td>{{flt.hobbsOut}}</td>
+            <td>{{flt.hoursFlown}}</td>
+            <td>{{flt.fuelHour}}</td>
+            <td>{{flt.fuelIn}}</td>
+            <td>{{flt.hoursLastOilChange}}</td>
+            <td class="text-success">{{flt.oilChange}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <footer-generic></footer-generic>
+</div>

@@ -1,0 +1,83 @@
+<div class="modal-content">
+  <form id="addReview" name="addReview" role="form" ng-submit="vm.onSubmit()" class="form-horizontal" novalidate>
+    <div class="modal-header">
+      <button type="button" ng-click="vm.modal.cancel()" class="close"><span ariahidden="true">×</span><span class="sr-only">Close</span></button> 
+      <h4 id="myModalLabel" class="modal-title">Update flight {{ vm.data.id }} on {{ vm.data.flt_date }}</h4>
+    </div>
+    <div class="modal-body">
+      <div role="alert" ng-show="vm.formError" class="alert alert-danger">{{ vm.formError }}</div>
+      <div class="form-group">
+        <label for="fltDate" class="col-xs-2 col-sm-2 control-label">Flight Date:</label>
+        <div class="col-xs-10 col-sm-10">
+          <input id="fltDate" name="fltDate" required="required" ng-model="vm.data.flt_date" class="form-control"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="hobbsOut" class="col-xs-2 col-sm-2 control-label">Hobbs Out:</label>
+        <div class="col-xs-10 col-sm-10">
+          <input id="hobbsOut" name="hobbsOut" required="required" ng-model="vm.data.hobbs_out" class="form-control"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="hobbsIn" class="col-xs-2 col-sm-2 control-label">Hobbs In:</label>
+        <div class="col-xs-10 col-sm-10">
+          <input id="hobbsIn" name="hobbsIn" required="required" ng-model="vm.data.hobbs_in" class="form-control"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="fuelOut" class="col-xs-2 col-sm-2 control-label">Fuel Out:</label>
+        <div class="col-xs-10 col-sm-10">
+          <input id="fuelOut" name="fuelOut" required="required" ng-model="vm.data.fuel_out" class="form-control"/> 
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="fuelIn" class="col-xs-2 col-sm-2 control-label">Fuel In:</label>
+        <div class="col-xs-10 col-sm-10">
+          <input id="fuelIn" name="fuelIn" required="required" ng-model="vm.data.fuel_in" class="form-control"/> 
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="fuelPurch" class="col-xs-2 col-sm-2 control-label">Fuel Purch:</label>
+        <div class="col-xs-10 col-sm-10">
+          <input id="fuelPurch" name="fuelPurch" required="required" ng-model="vm.data.fuel_purch" class="form-control"/> 
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="fuelCost" class="col-xs-2 col-sm-2 control-label">Fuel Cost:</label>
+        <div class="col-xs-10 col-sm-10">
+          <input id="fuelCost" name="fuelCost" required="required" ng-model="vm.data.fuel_cost" class="form-control"/> 
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="oilAdded" class="col-xs-2 col-sm-2 control-label">Oil Added:</label>
+        <div class="col-xs-10 col-sm-10">
+          <input id="oilAdded" name="oilAdded" required="required" ng-model="vm.data.oil_added" class="form-control"/> 
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="oilDipstick" class="col-xs-2 col-sm-2 control-label">Oil Dipstick:</label>
+        <div class="col-xs-10 col-sm-10">
+          <input id="oilDipstick" name="oilDipstick" required="required" ng-model="vm.data.oil_dipstick" class="form-control"/> 
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="oilChange" class="col-xs-2 col-sm-2 control-label">Oil Change:</label>
+        <div class="col-xs-10 col-sm-10">
+          <input id="oilChange" name="oilChange" required="required" ng-model="vm.data.oil_change" class="form-control"/> 
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="comments" class="col-sm-2 control-label">Comments</label>
+        <div class="col-sm-10">
+          <textarea id="comments" name="comments" rows="3" required="require" ng-model="vm.data.comment" class="form-control"></textarea> 
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button ng-click="vm.modal.cancel()" type="button" class="btn btn-default">Cancel</button>
+        <button type="submit" class="btn btn-primary">Submit flight</button>
+        <button type="button" class="btn btn-primary pull-left" ng-click="del = true" ng-show="!del">Delete flight</button>
+        <button ng-show="del" type="button" class="btn btn-danger pull-left" text-align="center" ng-click="vm.deleteFlight()">Are you sure?</button>
+      </div>
+    </form>
+  </div>
+</div>

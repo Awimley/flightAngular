@@ -1,0 +1,86 @@
+/*.location-map {padding-bottom: 20px;}*/
+.review {padding-bottom: 5px;}
+.panel-body.review-container {padding-top: 0;}
+.review-header {margin-bottom: 10px;}
+.reviewAuthor {margin: 0 5px;}
+.reviewTimestamp {color: #ccc;}
+
+.label-facility {margin-right: 2px}
+.rating-stars {margin-left: 3px;}
+#filter {margin-left: 4px;}
+
+p { font-size : 190% }
+.table-large { font-size : 130% }
+.logs {
+  height: 50px;
+}
+@media ()
+.datebutton {
+  margin : 0;
+  border : 0;
+  padding : 0;
+  height : 100%;
+  width : 100%;
+  font-size : 90%;
+}
+td {
+  padding : 0;
+  border : 0;
+  margin : 0;
+}
+#navbar-main {
+  padding : 0;
+  border : 0;
+  margin : 0;
+}
+.navi {
+  color : rgb(0,0,0);
+  opacity : 0.65;
+}
+.navi:hover {
+  color : rgb(0,0,0);
+  opacity : 1;
+}
+a{
+  -webkit-transition : font-weight 0.25s;
+  transition : font-weight 0.25s;
+}
+a:hover {
+  font-weight: bold;
+}
+
+tr:hover {
+  background-color : #D3D3D3;
+}
+.containing-area {
+  float : top;
+  height : 500px;
+  width : 1200px;
+  padding : 3px;
+}
+.scroll-area {
+  height: 450px;
+  overflow: auto;
+}
+#navbar-main {
+  font-size : 130%;
+}
+li {
+  padding-left : 35px;
+  padding-right : 35px;
+}
+.text-success {
+  font-weight: bold;
+}
+.centerMe {
+  text-align: center !important;
+}
+.pleaseFit {
+  padding-right: 0;
+}
+.btn-logout {
+  margin-top: 12px;
+}
+.planeSelect{
+  width: 40%;
+}

@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  h1.text-center= title
+  p.text-center Welcome to #{title}
+  .row
+    .col-xs-12.text-center
+      form.form-horizontal.text-center(action="/login", method="GET", role="form")
+        .form-group
+          label.col-xs-4.control-label(for="user") Username :
+          .col-xs-6
+            input#user.form-control(name="name")
+        .form-group
+          label.col-xs-4.control-label(for="password") Password :
+          .col-xs-6
+            input#user.form-control(name="password" type="password")
+        button.btn.btn-default Log In

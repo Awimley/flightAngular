@@ -1,0 +1,73 @@
+
+<page-header content="vm.pageHeader"></page-header>
+<div class="container">
+  
+
+    <div class="row addUserRow">
+      <div class="col-xs-6">
+        <h5 class="pull-right">Username: </h5>
+      </div>
+      <div class="col-xs-6">
+        <input class="addUserInput" placeholder="Type your username here" ng-model="vm.username">
+      </div>
+    </div>
+
+    <div class="row addUserRow">
+      <div class="col-xs-6">
+        <h5 class="pull-right">Password: </h5>
+      </div>
+      <div class="col-xs-6">
+        <input class="addUserInput" type="password" placeholder="password here" ng-model="vm.password">
+      </div>
+    </div>
+
+    <div class="row addUserRow">
+      <div class="col-xs-6">
+        <h5 class="pull-right">Repeat password: </h5>
+      </div>
+      <div class="col-xs-6">
+        <input class="addUserInput" type="password" placeholder="password here" ng-model="vm.verifyPassword">
+      </div>
+    </div>
+
+    <div class="row addUserRow">
+      <div class="col-xs-6">
+        <h5 class="pull-right">Add planes with enter: </h5>
+      </div>
+      <div class="col-xs-6">
+        <form ng-submit="vm.addPlane()">
+          <input class="addUserInput" placeholder="add planes" ng-model="vm.plane">
+          <button ng-show="false" type="submit"></button>
+        </form>
+      </div>
+    </div>
+    
+    <div class="row text-center">
+      <div class="col-xs-6">
+        <h5 class="pull-right" ng-show="vm.planes[0]">Planes:</h5>
+      </div>
+
+      <div class="col-xs-6">
+        <div class="row" ng-repeat="plane in vm.planes">
+          <h6>
+            {{plane}}
+          </h6>
+        </div>    
+      </div>
+    </div>
+
+    <div class="row form-control">
+      <div class="col-xs-6">
+        <button type="notSubmitLol" class="btn btn-default pull-right" ng-click="vm.clear()">Clear</button>
+      </div>
+
+      <div class="col-xs-6">
+        <form ng-submit="vm.addUser()">
+          <button type="submit" class="btn btn-primary pull-right">
+            Add User
+          </button>
+        </form>
+      </div>
+    </div>
+  
+</div>
