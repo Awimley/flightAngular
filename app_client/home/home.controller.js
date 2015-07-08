@@ -33,6 +33,11 @@
    //API calls are cool
     vm.selectPlane = function () {
       vm.pageHeader.strapline = vm.planeName;
+
+      vm.token.plane = vm.planeName;
+      $log.debug(vm.token);
+      localStorageService.cookie.set('token', vm.token);
+      
       flightData.flightData(vm.planeName)
       .success(function (data) {
         vm.data = {flight : data[data.length -1]};

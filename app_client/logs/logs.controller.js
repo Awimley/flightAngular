@@ -35,6 +35,7 @@
       vm.pageHeader.strapline = vm.planeName;
       //set plane in header
       vm.token.plane = vm.planeName;
+      $log.debug(vm.token);
       localStorageService.cookie.set('token', vm.token);
 
 
