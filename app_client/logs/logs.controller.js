@@ -7,8 +7,20 @@
   function logsCtrl($routeParams, $modal, $scope, flightData, $log, localStorageService, $location) {
 
     var vm = this;
+
+    //Remember the plane
     vm.token = localStorageService.cookie.get('token');
-    $log.debug(vm.token.planes);
+    if (vm.token.plane) {
+      vm.planeName = vm.token.plane;
+      flightData.flightData(vm.planeName)
+      .success(function (data) {
+        vm.data = {flights : data.reverse()};
+      })
+      .error(function (e) {
+        console.log(e);
+      });
+    }
+
 
     //Date stuff
     var date = new Date();
@@ -21,6 +33,12 @@
 
     vm.selectPlane = function () {
       vm.pageHeader.strapline = vm.planeName;
+      //set plane in header
+      vm.token.plane = vm.planeName;
+      localStorageService.cookie.set('token', vm.token);
+
+
+      //Import flight data for selected plane
       flightData.flightData(vm.planeName)
       .success(function (data) {
         vm.data = {flights : data.reverse()};
@@ -71,12 +89,21 @@
         controller : 'addModalCtrl as vm',
         resolve : {
           flight : function () {
-            return {
-              flt_date : date,
-              hobbs_out : vm.data.flights[0].hobbsIn,
-              fuel_out : vm.data.flights[0].fuelIn,
-              planeName: vm.planeName
-            };
+            if (!vm.data.flights[0].hobbsIn) {
+              return {
+                flt_date: date,
+                hobbs_out: 0,
+                fuel_out: 0,
+                planeName: vm.planeName
+              }
+            } else {
+              return {
+                flt_date : date,
+                hobbs_out : vm.data.flights[0].hobbsIn,
+                fuel_out : vm.data.flights[0].fuelIn,
+                planeName: vm.planeName
+              };  
+            }
           }
         }
       });

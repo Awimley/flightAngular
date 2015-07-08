@@ -13,6 +13,17 @@
       strapline: ''
     };
     vm.token = localStorageService.cookie.get('token');
+    if (vm.token.plane) {
+      vm.planeName = vm.token.plane;
+      flightData.flightData(vm.planeName)
+      .success(function (data) {
+        vm.data = {flights : data.reverse()};
+      })
+      .error(function (e) {
+        console.log(e);
+      });
+    }
+
     $log.debug(vm.token);
 
     var date = new Date();
