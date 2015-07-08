@@ -13,7 +13,9 @@
       strapline: ''
     };
     vm.token = localStorageService.cookie.get('token');
+    
     if (vm.token.plane) {
+      vm.planeName = vm.token.plane;
       flightData.flightData(vm.planeName)
       .success(function (data) {
         vm.data = {flight : data[data.length -1]};
@@ -37,7 +39,7 @@
       vm.token.plane = vm.planeName;
       $log.debug(vm.token);
       localStorageService.cookie.set('token', vm.token);
-      
+
       flightData.flightData(vm.planeName)
       .success(function (data) {
         vm.data = {flight : data[data.length -1]};
