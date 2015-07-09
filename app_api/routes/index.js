@@ -9,6 +9,7 @@ module.exports = function(app){
     //READ=========================================================== R
     app.get('/loglist/:planeName', api.getLogs);    
     app.get('/findone/:id', api.findOne);
+    app.get('/allUsers', api.getUsers);
     //UPDATE========================================================= U
     app.put('/logupdate/:id', api.updateFlight);
     //DELETE========================================================= D

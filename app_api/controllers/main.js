@@ -160,6 +160,15 @@ module.exports.addUser = function (req, res) {
   });
 };
 
+module.exports.getUsers = function (req, res) {
+  User.find({}, function (err, data) {
+    if (err) {sendJsonResponse(res, 400, err); return;}
+    if (!data) {sendJsonResponse(res, 404, "User not found."); return;}
+    sendJsonResponse(res, 201, data);
+    return;
+  });
+};
+
 module.exports.tryLogin = function (req, res) {
   //credentials in req.body
   var username,

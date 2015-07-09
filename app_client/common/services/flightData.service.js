@@ -85,6 +85,10 @@
       return $http.post('/verifyUser', data, config);
     };
 
+    var getUsers = function () {
+      return $http.get('/allUsers');
+    };
+
     var addUser = function (data) {
       return $http.post('/addUser', data);
     };
@@ -97,7 +101,8 @@
       updateFlight : updateFlight,
       tryLogin     : tryLogin,
       verifyUser   : verifyUser,
-      addUser      : addUser
+      addUser      : addUser,
+      getUsers     : getUsers
     };
   }
 })();

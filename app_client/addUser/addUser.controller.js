@@ -37,30 +37,55 @@
     };
 
     vm.addUser = function () {
+      vm.error = null;
       $log.debug("Add user here");
 
-      if (!(vm.password == vm.verifyPassword)) {
-        return;
-      }
+      flightData.getUsers()
+      .success (function (data) {
+        for (i in data) {
+          console.log(data[i].user);
+          if (vm.username == data[i].user) {
+            vm.error = "Username already taken, please choose another.";
+            vm.exit = true;
+          }
+        }
 
-      vm.userData = {
-        user : vm.username,
-        password : vm.password,
-        token : {},
-        planes: vm.planes  
-      };
-      
-      $log.debug(vm.userData);
+        if (vm.exit) {
+          vm.exit = false;
+          console.log("Snow");
+          return;
+        } 
+        if (!(vm.password == vm.verifyPassword)) {
+          vm.error = "Passwords do not match.";
+          return;
+        }
+        if (!vm.password) {
+          vm.error = "Please enter a password.";
+          return;
+        } else {
+          vm.userData = {
+            user : vm.username,
+            password : vm.password,
+            token : {},
+            planes: vm.planes  
+          };
+          
+          $log.debug(vm.userData);
 
-      flightData.addUser(vm.userData)
-      .success( function (data) {
-        $log.debug(data);
-        $location.url("/login");
+          flightData.addUser(vm.userData)
+          .success( function (data) {
+            $log.debug(data);
+            $location.url("/login");
+          })
+          .error( function (err) {
+            $log.debug(err);
+          });
+        }
       })
       .error( function (err) {
         $log.debug(err);
+        vm.error = err;
       });
-
     };
 
     vm.clear = function () {
