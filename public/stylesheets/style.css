@@ -84,3 +84,15 @@ li {
 .planeSelect{
   width: 40%;
 }
+.btn-nav {
+  margin-top: 12px;
+  border-radius: 10px;
+}
+.dropdown-menu {
+  margin-left: 30%;
+  width: 200px;
+}
+li {
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+}

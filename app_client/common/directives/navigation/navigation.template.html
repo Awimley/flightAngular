@@ -1,17 +1,25 @@
 <div class="navbar nav navbar-default navbar-fixed-top">
   <div class="container">
     <div class="row">
-      <div class="col-xs-4 pleaseFit">
+      <div class="col-xs-4">
         <a href="/#/home" class="navbar-brand">Welcome {{ vm.token.user }}!</a>
         <button type="button" class="btn btn-default btn-logout" ng-click="vm.logout()">Logout</button>
         <button type="button" data-toggle="collapse" data-target="#navbar-main" class="navbar-toggle"><span class="glyphicon glyphicon-arrow-down"></span><span class="iconbar"></span></button>
       </div>
-      <div id="navbar-main" class="navbar-collapse collapse col-xs-8 pull-right">
-        <ul class="nav navbar-nav">
+      <div id="navbar-main col-xs-4" class="dropdown">
+        <button class="btn btn-primary btn-nav" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Navigation<span class="caret"></span></button>
+        <ul class="dropdown-menu">
           <li class="navi"><a ng-href="/home">Home</a></li>
           <li class="navi"><a ng-href="/logs">Logs</a></li>
           <li class="navi"><a ng-href="/analysis">Analysis</a></li>
           <li class="navi"><a ng-href="" ng-click="vm.popupAddForm()">Add a flight</a></li>
+        </ul>
+      </div>
+
+      <div id="navbar col-xs-4" class="dropdown">
+        <button class="btn btn-primary btn-nav" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">planes<span class="caret"></span></button>
+        <ul class="dropdown-menu">
+          <li class="navi" ng-repeat="plane in vm.token.planes">{{plane}}</li>
         </ul>
       </div>
     </div>
