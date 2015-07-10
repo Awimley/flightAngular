@@ -32,10 +32,11 @@
       title: 'Logs'
     };
 
-    vm.selectPlane = function () {
-      vm.pageHeader.strapline = vm.planeName;
+    vm.selectPlane = function (plane) {
+      vm.pageHeader.strapline = plane;
       //set plane in header
-      vm.token.plane = vm.planeName;
+      vm.token.plane = plane;
+      vm.planeName = plane;
       $log.debug(vm.token);
       localStorageService.cookie.set('token', vm.token);
 

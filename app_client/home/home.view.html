@@ -2,14 +2,8 @@
 
 <div class="container">
   <br>
-  <br>
-  <br>
   <page-header content="vm.pageHeader"></page-header>
 <!--   <div role="alert" ng-show="!vm.data" class="alert alert-success text-center"><h3>Loading...</h3></div> -->
-  <div class="row text-center">
-    <h5>Select a plane: </h5><select class="planeSelect" ng-options="plane as plane for plane in vm.token.planes" ng-model="vm.planeName" ng-change="vm.selectPlane()"></select>
-  </div>
-  <hr>
 
   <div class="row text-center" ng-init="mod=0">
     <div class="col-sm-12">

@@ -79,20 +79,34 @@ li {
   padding-right: 0;
 }
 .btn-logout {
-  margin-top: 12px;
+  margin-top: 5%;
+  margin-left: 10%;
 }
 .planeSelect{
   width: 40%;
 }
 .btn-nav {
-  margin-top: 12px;
-  border-radius: 10px;
+  margin-top: 3%;
+  margin-bottom: 3%;
+  border-radius: 25px;
+  width: 90%;
+  height: 80%;
+  font-size: large;
 }
 .dropdown-menu {
-  margin-left: 30%;
-  width: 200px;
+  margin-left: 10%;
+  width: 70%;
+  text-align: center;
+
 }
 li {
   padding-left: 10px !important;
   padding-right: 10px !important;
+}
+.navGray {
+  background-color: #dddddd;
+}
+.navCaret {
+  font-size: large;
+  margin-left: 20px;
 }

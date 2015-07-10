@@ -36,20 +36,19 @@
     date = date.slice(5,7) + '/' + date.slice(8,10) + '/' + date.slice(2,4);
 
    //API calls are cool
-    vm.selectPlane = function () {
-      vm.pageHeader.strapline = vm.planeName;
-
-      vm.token.plane = vm.planeName;
+    vm.selectPlane = function (plane) {
+      vm.pageHeader.strapline = plane;
+      //set plane in header
+      vm.token.plane = plane;
+      vm.planeName = plane;
       $log.debug(vm.token);
       localStorageService.cookie.set('token', vm.token);
 
+      //Import flight data for selected plane
       flightData.flightData(vm.planeName)
       .success(function (data) {
-        vm.data = {
-          flight : data[data.length -1],
-          flights: data.reverse()
-        };
-      $log.debug(vm.data.flight);
+        vm.data = {flights : data.reverse()};
+        console.log(data);
       })
       .error(function (e) {
         console.log(e);
