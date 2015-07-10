@@ -79,8 +79,10 @@ li {
   padding-right: 0;
 }
 .btn-logout {
-  margin-top: 5%;
-  margin-left: 10%;
+  padding: 0px;
+  margin: 0px;
+  margin-top: 15%;
+  width: 100%;
 }
 .planeSelect{
   width: 40%;
@@ -91,13 +93,12 @@ li {
   border-radius: 25px;
   width: 90%;
   height: 80%;
-  font-size: large;
+  font-size: 20px;
 }
 .dropdown-menu {
   margin-left: 10%;
   width: 70%;
   text-align: center;
-
 }
 li {
   padding-left: 10px !important;
@@ -109,4 +110,10 @@ li {
 .navCaret {
   font-size: large;
   margin-left: 20px;
+}
+table {
+  background-color: #eeeeee;
+}
+.navHead {
+  margin-top: 15%;
 }

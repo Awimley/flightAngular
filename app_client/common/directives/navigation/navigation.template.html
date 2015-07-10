@@ -1,12 +1,14 @@
 <div class="navbar nav navbar-default navbar-fixed-top navGray">
   <div class="container">
     <div class="row">
-      <div class="col-xs-4">
-        <h5 class="pull-left"> 
+      <div class="col-xs-2">
+        <h6 class="pull-right navHead"> 
           <strong>User:</strong> {{ vm.token.user }} <br>
           <strong>Plane: </strong> {{vm.planeName}}
-        </h5>
-        <button type="button" class="btn btn-default btn-logout" ng-click="vm.logout()">Logout</button>
+        </h6>
+      </div>
+      <div class="col-xs-2">
+        <button type="button" class="btn btn-default btn-logout text-center" ng-click="vm.logout()">Logout</button>
       </div>
       <div id="navbar-main" class="dropdown col-xs-4">
         <button class="btn btn-primary btn-nav" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Navigation<span class="caret navCaret"></span></button>
