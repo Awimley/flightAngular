@@ -109,7 +109,7 @@ li {
 }
 .navCaret {
   font-size: large;
-  margin-left: 20px;
+  padding-left: 8%;
 }
 table {
   background-color: #eeeeee;
