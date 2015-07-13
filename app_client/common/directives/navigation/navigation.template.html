@@ -11,7 +11,7 @@
         <button type="button" class="btn btn-default btn-logout text-center" ng-click="vm.logout()">Logout</button>
       </div>
       <div id="navbar-main" class="dropdown col-xs-4">
-        <button class="btn btn-primary btn-nav" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Navigation<span class="caret navCaret"></span></button>
+        <button class="btn btn-primary btn-nav" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Navigation<span class="glyphicon glyphicon-tasks navCaret"></span></button>
         <ul class="dropdown-menu">
           <li class="navi"><a ng-href="/home">Home</a></li>
           <li class="navi"><a ng-href="/logs">Logs</a></li>
@@ -21,7 +21,7 @@
       </div>
 
       <div id="navbar" class="dropdown col-xs-4">
-        <button class="btn btn-primary btn-nav" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">planes<span class="caret navCaret"></span></button>
+        <button class="btn btn-primary btn-nav" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">planes<span class="glyphicon glyphicon-tasks navCaret"></span></button>
         <ul class="dropdown-menu" ng-model="vm.plane">
           <li class="navi" ng-repeat="plane in vm.token.planes" ng-click="vm.selectPlane(plane)"><a>{{plane}}</a></li>
         </ul>
