@@ -22,7 +22,7 @@
         <tfoot>
         </tfoot>
         <tbody class="logs">
-          <tr ng-repeat="flt in vm.data.flights">
+          <tr ng-repeat="flt in vm.data.flights" class="hovShadow">
             <td><a ng-attr-id="{{ flt._id }}" ng-click="vm.popupUpdateForm($event)" class="btn btn-default datebutton">{{flt.fltDate}}</a></td>
             <td>{{flt.hobbsIn}}</td>
             <td>{{flt.hobbsOut}}</td>
