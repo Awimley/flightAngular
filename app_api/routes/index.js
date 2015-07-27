@@ -6,6 +6,7 @@ module.exports = function(app){
     //CREATE========================================================= C
     app.post('/logadd', api.addFlight);
     app.post('/addUser', api.addUser);
+    app.post('/addPlane', api.addPlane);
     //READ=========================================================== R
     app.get('/loglist/:planeName', api.getLogs);    
     app.get('/findone/:id', api.findOne);

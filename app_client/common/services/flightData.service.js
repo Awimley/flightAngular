@@ -89,6 +89,10 @@
       return $http.get('/allUsers');
     };
 
+    var addPlane = function (data) {
+      return $http.post('/addPlane', data);
+    }
+
     var addUser = function (data) {
       return $http.post('/addUser', data);
     };
@@ -102,7 +106,8 @@
       tryLogin     : tryLogin,
       verifyUser   : verifyUser,
       addUser      : addUser,
-      getUsers     : getUsers
+      getUsers     : getUsers,
+      addPlane     : addPlane
     };
   }
 })();

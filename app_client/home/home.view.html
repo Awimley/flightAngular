@@ -7,6 +7,29 @@
 
   <div class="row text-center" ng-init="mod=0">
     <div class="col-sm-12">
+      <div id="addPlane" ng-init="vm.addPlaneForm = false;">
+        <button class="btn btn-default" ng-click="vm.addPlaneForm = true;" ng-show="!vm.addPlaneForm">Add a Plane</button>
+        <form id="addPlaneForm" ng-show="vm.addPlaneForm" ng-submit="vm.addPlane()">
+          <div class="row">
+            <div class="col-xs-6">
+              <label class="pull-right"><h4>Plane name:</h4></label>
+            </div>
+            <div class="col-xs-6">
+              <input id="planeNameInput" ng-model="vm.plane" class="pull-left">
+            </div>            
+          </div>
+          <div class="row">
+            <div class="col-xs-6">
+              <button type="notSubmitLol" class="btn btn-danger pull-right">Cancel</button>
+            </div>
+            <div class="col-xs-6">
+              <button type="submit" class="btn btn-primary pull-left">Submit</button>
+            </div>
+          </div>
+          
+        </form>
+      </div>
+      <br>
       <table class="table table-bordered table-responsive table-large" id="table" ng-show="vm.data">
         <thead>
           <tr>

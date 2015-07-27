@@ -99,6 +99,20 @@
         });
       });
     };
+
+    vm.addPlane = function () {
+      flightData.addPlane({
+        planeName: vm.plane,
+        token: vm.token
+      })
+      .success( function (data) {
+        $log.debug(data);
+      })
+      .error (function (err) {
+        $log.debug(err);
+      })
+    };
+
     vm.logout = function () {
       localStorageService.cookie.set("token", {});
       $location.url("/login");

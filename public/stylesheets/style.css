@@ -36,6 +36,7 @@ td {
 .navi {
   color : rgb(0,0,0);
   opacity : 0.65;
+  font-size: large;
 }
 .navi:hover {
   color : rgb(0,0,0);
@@ -130,12 +131,15 @@ table {
   box-shadow:         0px 0px 30px 5px #aaa;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
 }
 input:hover {
-  -webkit-box-shadow: 0px 0px 50px -5px #00B2EE;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
-  -moz-box-shadow:    0px 0px 50px -5px #00B2EE;  /* Firefox 3.5 - 3.6 */
-  box-shadow:         0px 0px 50px -5px #00B2EE;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+  -webkit-box-shadow: 0px 0px 50px -10px #00B2EE;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+  -moz-box-shadow:    0px 0px 50px -10px #00B2EE;  /* Firefox 3.5 - 3.6 */
+  box-shadow:         0px 0px 50px -10px #00B2EE;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
 }
 .datebutton:hover {
   -webkit-box-shadow: 0px 0px 10px 5px #aaa;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
   -moz-box-shadow:    0px 0px 10px 5px #aaa;  /* Firefox 3.5 - 3.6 */
   box-shadow:         0px 0px 10px 5px #aaa;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+}
+#planeNameInput {
+  margin-top: 2%;
 }

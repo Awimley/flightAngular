@@ -9,6 +9,7 @@ var findMostRecent = function (callback) {
     Flight.find().sort({hobbs_in: -1}).limit(1).exec(callback);
 };
 var sendJsonResponse = function(res, status, content) {
+  console.log(content);
   res.status(status);
   res.json(content);
 };
@@ -43,6 +44,27 @@ module.exports.addFlight = function (req, res) {
     sendJsonResponse(res, 200, thisFlight);
     });
   });
+};
+
+module.exports.addPlane = function (req, res) {
+  //sendJsonResponse(res, 201, req.body);
+  User.find({user: req.body.token.user}, function (err, doc) {
+
+    //Error catching and validation.
+    if (err) {sendJsonResponse(res, 401, err); return;}
+    if (!doc) {sendJsonResponse(res, 404, "Error: User not found."); return;}
+    if (doc[1]) {sendJsonResponse(res, 400, "Error: Multiple users found. Are you logged in?"); return;}
+
+    console.log(docs[0]);
+    console.log(req.body.planeName);
+    
+    doc[0].planes.push(req.body.planeName);
+    doc[0].save( function (err, docs) {
+      if (err) {sendJsonResponse(res, 401, err); return;}
+      if (err) {sendJsonResponse(res, 400, err); return;}
+      sendJsonResponse(res, 204, docs);
+    })
+  })
 };
 
 //UPDATE
@@ -209,6 +231,7 @@ module.exports.tryLogin = function (req, res) {
 };
 
 module.exports.verifyUser = function (req, res) {
+  console.log(req.body);
   User.findOne({ user : req.body.user.toLowerCase()}, function (err, user) {
     var response = false;
     //Returns true or false
