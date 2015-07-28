@@ -4,8 +4,8 @@
     .module('flightApp')
     .controller('homeCtrl', homeCtrl);
 
-  homeCtrl.$inject = ['$modal', '$scope', 'flightData', '$log', 'localStorageService', '$location'];
-  function homeCtrl ($modal, $scope, flightData, $log, localStorageService, $location) {
+  homeCtrl.$inject = ['$modal', '$scope', 'flightData', '$log', 'localStorageService', '$location', '$route'];
+  function homeCtrl ($modal, $scope, flightData, $log, localStorageService, $location, $route) {
     var vm = this;
     vm.lastInspection = 'December 2015';
     vm.pageHeader = {
@@ -107,6 +107,9 @@
       })
       .success( function (data) {
         $log.debug(data);
+        vm.token.planes.push(vm.plane);
+        localStorageService.cookie.set('token', vm.token);
+        $route.reload();
       })
       .error (function (err) {
         $log.debug(err);

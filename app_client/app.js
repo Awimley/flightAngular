@@ -25,7 +25,7 @@ function config ($routeProvider, $locationProvider, localStorageServiceProvider)
       templateUrl: '/analysis/analysis.view.html',
       controller: 'analysisCtrl',
       controllerAs: 'vm'
-    })
+    }) 
     .when('/addUser', {
       templateUrl: '/addUser/addUser.view.html',
       controller: 'addUserCtrl',

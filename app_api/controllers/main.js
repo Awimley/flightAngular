@@ -55,7 +55,7 @@ module.exports.addPlane = function (req, res) {
     if (!doc) {sendJsonResponse(res, 404, "Error: User not found."); return;}
     if (doc[1]) {sendJsonResponse(res, 400, "Error: Multiple users found. Are you logged in?"); return;}
 
-    console.log(docs[0]);
+    console.log(doc[0]);
     console.log(req.body.planeName);
     
     doc[0].planes.push(req.body.planeName);
