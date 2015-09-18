@@ -38,7 +38,8 @@ function config ($routeProvider, $locationProvider, localStorageServiceProvider)
 
     //Configure local storage
     localStorageServiceProvider
-      .setStorageType('localStorage');
+      .setStorageType('localStorage')
+      .setStorageCookie(0, '/');
 }
 
 angular
