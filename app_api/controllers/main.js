@@ -5,11 +5,11 @@ var User = require('../../app_server/models/user');
 var logs = [];
 var expressJwt = require('express-jwt');
 var jwt = require('jsonwebtoken');
+var fs = require('fs');
 var findMostRecent = function (callback) {
     Flight.find().sort({hobbs_in: -1}).limit(1).exec(callback);
 };
 var sendJsonResponse = function(res, status, content) {
-  console.log(content);
   res.status(status);
   res.json(content);
 };
@@ -78,7 +78,7 @@ module.exports.updateFlight = function (req, res) {
     doc.hobbs_in = Number(req.body.hobbs_in).toFixed(1);
     doc.fuel_out = Number(req.body.fuel_out).toFixed(1);
     doc.fuel_in = Number(req.body.fuel_in).toFixed(1);
-    doc.fuel_purch = Number(req.body.fuel_purch.toFixed(1));
+    doc.fuel_purch = Number(req.body.fuel_purch).toFixed(1);
     doc.fuel_cost = Number(req.body.fuel_cost).toFixed(1);
     doc.oil_added = Number(req.body.oil_added).toFixed(1);
     doc.oil_dipstick = Number(req.body.oil_dipstick).toFixed(1);
@@ -89,6 +89,7 @@ module.exports.updateFlight = function (req, res) {
     sendJsonResponse(res, 200, doc);
   });
 };
+
 //DELETE
 module.exports.deleteFlight = function (req, res) {
   console.log('deleting flight');
@@ -106,8 +107,16 @@ var flights = []
     sendJsonResponse(res, 401, "No planes selected.");
     return;
   }*/
+
+  //Hosted at btc-az-devel.cloudapp.net
+  //btcadmin
+  //55whodat@!
+
   console.log(req.params.planeName);
   Flight.find({planeName: req.params.planeName}).sort({hobbs_out:1}).exec(function(err, docs) {
+
+    var back = JSON.stringify(docs);
+
     for (i in docs) {
       if (docs[i].oil_change == 1) {
         lastOilChange = docs[i].hobbs_out;
