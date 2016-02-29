@@ -7,12 +7,21 @@
   homeCtrl.$inject = ['$modal', '$scope', 'flightData', '$log', 'localStorageService', '$location', '$route'];
   function homeCtrl ($modal, $scope, flightData, $log, localStorageService, $location, $route) {
     var vm = this;
-    vm.lastInspection = 'December 2015';
+
     vm.pageHeader = {
       title : 'N562D App (angular edition!)',
       strapline: ''
     };
     vm.token = localStorageService.cookie.get('token');
+
+    flightData.getUsers()
+    .success(function (data) {
+      console.log(data);
+      vm.lastInspection = data[1].lastInspection;
+    })
+    .error( function (e) {
+      console.log(e);
+    });
 
     if (vm.token.planes) {
       vm.planeName = vm.token.planes[0];
@@ -61,8 +70,14 @@
         user: vm.token.user
       };
 
-      flightData.updateUser(data);
-    }
+      flightData.updateUser(data)
+      .success( function (dat) {
+        console.log(dat);
+      })
+      .error ( function (e) {
+        console.log(e);
+      });
+    };
 
     //for adding flights
     vm.popupAddForm = function () {
