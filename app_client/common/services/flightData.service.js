@@ -97,6 +97,10 @@
       return $http.post('/addUser', data);
     };
 
+    var updateUser = function (data) {
+      return $http.post('/updateUser', data);
+    };
+
     return {
       flightData   : getData,
       flight       : findOne,
@@ -107,7 +111,8 @@
       verifyUser   : verifyUser,
       addUser      : addUser,
       getUsers     : getUsers,
-      addPlane     : addPlane
+      addPlane     : addPlane,
+      updateUser   : updateUser
     };
   }
 })();

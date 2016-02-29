@@ -19,6 +19,9 @@
     "mongoose": "4.*",
     "request": "2.36.x",
     "uglifyjs": "^2.3.6",
-    "bson" : "*"
+    "bson" : "*",
+    "child_process": "*",
+    "nodemailer":"*"
+
   }
 }

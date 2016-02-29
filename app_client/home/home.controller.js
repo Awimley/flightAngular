@@ -14,8 +14,8 @@
     };
     vm.token = localStorageService.cookie.get('token');
 
-    if (vm.token.plane) {
-      vm.planeName = vm.token.plane;
+    if (vm.token.planes) {
+      vm.planeName = vm.token.planes[0];
       flightData.flightData(vm.planeName)
       .success(function (data) {
         vm.data = {
@@ -54,6 +54,15 @@
         console.log(e);
       });
     };
+
+    vm.updateUser = function () {
+      var data = {
+        lastInspection : vm.lastInspection,
+        user: vm.token.user
+      };
+
+      flightData.updateUser(data);
+    }
 
     //for adding flights
     vm.popupAddForm = function () {

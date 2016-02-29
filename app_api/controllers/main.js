@@ -90,9 +90,46 @@ module.exports.updateFlight = function (req, res) {
   });
 };
 
+module.exports.updateUser = function (req, res) {
+  console.log("Updating user :");
+  console.log(req.body);
+  User.find({
+    "user": req.body.user
+  }, function (err, docs) {
+    var user = docs[0];
+    if (err) {
+      sendJsonResponse(res, 400, err);
+    } else if (docs[0]) {
+      sendJsonResponse(res, 401, "Missing authentication record.");
+    } else {
+      user.set("inspectionDate", req.body.inspectionDate);
+      user.save(function (err) {
+        if (err) {
+          sendJsonResponse(res, 400, err);
+        } else {
+          sendJsonResponse(res, 201, user);
+        }
+      });
+    }
+  });
+  /*User.findOneAndUpdate({
+    "user": req.body.user
+  }, req.body
+  , {} //Options
+  , function (err, doc) {
+    console.log(doc);
+    if (err) {
+      sendJsonResponse(res, 400, err);
+    } else {
+      sendJsonResponse(res , 200, doc);
+    }
+  });*/
+};
+
 //DELETE
 module.exports.deleteFlight = function (req, res) {
-  console.log('deleting flight');
+  console.log('deleting flight:');
+
   Flight.findByIdAndRemove(req.params.id, function (err, doc){
     console.log('DELETING ' + doc.id);
   });

@@ -7,6 +7,7 @@ module.exports = function(app){
     app.post('/logadd', api.addFlight);
     app.post('/addUser', api.addUser);
     app.post('/addPlane', api.addPlane);
+    app.post('/updateUser', api.updateUser);
     //READ=========================================================== R
     app.get('/loglist/:planeName', api.getLogs);    
     app.get('/findone/:id', api.findOne);

@@ -10,8 +10,8 @@
 
     //Remember the plane
     vm.token = localStorageService.cookie.get('token');
-    if (vm.token.plane) {
-      vm.planeName = vm.token.plane;
+    if (vm.token.planes) {
+      vm.planeName = vm.token.planes[0];
       flightData.flightData(vm.planeName)
       .success(function (data) {
         vm.data = {flights : data.reverse()};
