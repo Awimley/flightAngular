@@ -93,42 +93,20 @@ module.exports.updateFlight = function (req, res) {
 module.exports.updateUser = function (req, res) {
   console.log("Updating user :");
   console.log(req.body);
-  /*User.find({
+  User.find({
     "user": req.body.user
   }, function (err, doc) {
-    var user = doc[0];
+
     if (err) {
       sendJsonResponse(res, 400, err);
     } else if (!doc) {
       sendJsonResponse(res, 401, "Missing authentication record.");
     } else {
-      user._doc.lastInspection = req.body.lastInspection;
-      console.log(user);
-      user.save(/*function (err) {
-        if (err) {
-          sendJsonResponse(res, 400, err);
-        } else {
-          sendJsonResponse(res, 201, user);
-        }
+      doc.forEach( function (user) {
+        user['lastInspection'] = req.body.lastInspection;
+        console.log(user);
+        user.save();
       });
-      sendJsonResponse(res, 200, user);
-    }
-  });*/
-  User.findOneAndUpdate({ //query
-    "user": req.body.user
-  },{ //update
-    $set: {
-      lastInspection : req.body.lastInspection
-    }
-  },{ //options
-    "new": true
-  },
-  function (err, doc) { //callback
-    console.log(doc);
-    if (err) {
-      sendJsonResponse(res, 400, err);
-    } else {
-      sendJsonResponse(res , 201, doc);
     }
   });
 };
